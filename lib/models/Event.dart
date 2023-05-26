@@ -10,6 +10,7 @@ class Event extends Equatable {
   String? venueName;
   String? venueCity;
   String? venueCountry;
+  String? description;
 
   Event({
     required this.id,
@@ -21,6 +22,7 @@ class Event extends Equatable {
     required this.venueName,
     required this.venueCity,
     required this.venueCountry,
+    required this.description,
   });
 
   Event.fromJson(Map<dynamic, dynamic> json) {
@@ -28,11 +30,12 @@ class Event extends Equatable {
     title = json['title'];
     bannerImage = json['banner_image'];
     dateTime = json['date_time'];
-    organizerName = json['organizer_name'];
-    organizerIcon = json['organizer_icon'];
+    organizerName = json['organiser_name'];
+    organizerIcon = json['organiser_icon'];
     venueName = json['venue_name'];
     venueCity = json['venue_city'];
     venueCountry = json['venue_country'];
+    description = json['description'];
   }
 
   @override

@@ -17,6 +17,7 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
   EventsBloc(this._eventRepository) : super(EventsLoading ()) {
     on<LoadEvents>(_onLoadEvents);
     on<SearchEvents>(_onSearchEvents);
+    on<EventDetails>(_onEventDetails);
   }
 
   void _onLoadEvents(LoadEvents event, Emitter<EventsState> emit) async {
@@ -37,6 +38,16 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       emit(SearchLoaded(events: events));
     } catch (e) {
       emit(SearchError(e.toString()));
+    }
+  }
+
+  void _onEventDetails(EventDetails event, Emitter<EventsState> emit) async {
+    emit(EventDetailsLoading());
+    try {
+      final events = await _eventRepository.getEventDetails(event.id);
+      emit(EventDetailsLoaded(event: events));
+    } catch (e) {
+      emit(EventDetailsError(e.toString()));
     }
   }
 }

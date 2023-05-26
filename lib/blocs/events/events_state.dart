@@ -28,7 +28,6 @@ class EventsError extends EventsState {
 }
 
 
-
 class SearchLoading extends EventsState{}
 
 class SearchLoaded extends EventsState{
@@ -43,6 +42,26 @@ class SearchLoaded extends EventsState{
 class SearchError extends EventsState{
   final String error;
   const SearchError(this.error);
+
+  @override
+  List<Object> get props => [error];
+}
+
+
+class EventDetailsLoading extends EventsState{}
+
+class EventDetailsLoaded extends EventsState{
+  final Event event;
+
+  const EventDetailsLoaded({required this.event});
+
+  @override
+  List<Object> get props => [event];
+}
+
+class EventDetailsError extends EventsState{
+  final String error;
+  const EventDetailsError(this.error);
 
   @override
   List<Object> get props => [error];

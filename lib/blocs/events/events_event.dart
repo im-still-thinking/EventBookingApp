@@ -23,6 +23,9 @@ class SearchEvents extends EventsEvent {
 }
 
 class EventDetails extends EventsEvent{
+  int id;
+
+  EventDetails({required this.id});
 
   @override
   List <Object> get props => [];
